@@ -14,13 +14,34 @@ type Props = {
 };
 
 const prefetchEmail = async (id?: string) => {
-  if (!id) {
-    return { email: undefined, error: 'No data' };
-  }
   try {
     const oauth2Client = await getOAuthClient();
 
     const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
+
+    if (!id) {
+      const data = await gmail.users.messages.list({
+        userId: 'me',
+        maxResults: 1,
+      });
+
+      if (!data.data.messages) {
+        return { email: undefined, error: 'No emails found' };
+      }
+
+      const message = await gmail.users.messages.get({
+        userId: 'me',
+        id: data.data.messages?.[0]?.id ?? undefined,
+      });
+
+      if (!message) {
+        return { email: undefined, error: 'No emails found' };
+      }
+
+      const email = new ParseGmailApi().parseMessage(message.data);
+
+      return { email: email, error: undefined };
+    }
 
     const data = await gmail.users.messages.get({
       userId: 'me',
@@ -44,7 +65,7 @@ async function Email({ searchParams: { id } }: Props) {
 
   return (
     <div className="w-full bg-neutral-900 h-full max-h-screen overflow-scroll flex flex-col">
-      <Letter data={email} sId={id} />
+      <Letter data={email} sId={id ?? email?.id} />
     </div>
   );
 }

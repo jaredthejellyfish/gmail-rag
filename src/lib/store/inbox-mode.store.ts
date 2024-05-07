@@ -1,16 +1,16 @@
 import { create } from 'zustand';
 
-interface CurrentEmailState {
+interface InboxModeState {
   status: string;
-  toggle: (state: string) => void;
+  toggle: () => void;
+  set: (state: 'all' | 'unread') => void;
 }
 
-const currentEmailStore = create<CurrentEmailState>((set) => ({
+const inboxModeStore = create<InboxModeState>((set) => ({
   status: 'all',
-  toggle: (state) =>
-    set(() => {
-      return state === 'unread' ? 'all' : 'unread';
-    }),
+  toggle: () =>
+    set((state) => ({ status: state.status === 'unread' ? 'all' : 'unread' })),
+  set: (state) => set({ status: state }),
 }));
 
-export default currentEmailStore;
+export default inboxModeStore;

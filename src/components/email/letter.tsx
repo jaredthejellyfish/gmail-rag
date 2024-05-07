@@ -11,6 +11,7 @@ import currentEmailStore from '@/lib/store/current-email.store';
 import { Avatar, AvatarFallback } from '../ui/avatar';
 import EmailHeader from './email-header';
 import EmailSkeleton from './email-skeleton';
+import { setSearchParam } from '@/lib/utils';
 
 type Props = {
   data?: IEmail;
@@ -39,11 +40,13 @@ function Letter({ data: email, sId }: Props) {
     queryKey: ['email', validId],
     queryFn: async () => await getEmail(validId ?? null),
     initialData: email,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 
   useEffect(() => {
     if (data && (id ?? sId)) {
-      window.history.replaceState(null, '', `/inbox?id=${validId}`);
+      setSearchParam('id', data.id);
     }
   }, [id, sId, validId, data]);
 

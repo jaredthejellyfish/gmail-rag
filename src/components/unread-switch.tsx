@@ -2,8 +2,21 @@
 
 import React, { useState } from 'react';
 
+import { addSearchParam, removeSearchParam } from '@u/searchParams';
+
+import inboxModeStore from '@/lib/store/inbox-mode.store';
+
 function UnreadSwitch() {
   const [activeTab, setActiveTab] = useState<number>(0);
+  const { set } = inboxModeStore();
+
+  const handleClick = (tab: number) => {
+    setActiveTab(tab);
+
+    tab === 0 ? removeSearchParam('unread') : addSearchParam('unread', 'true');
+
+    set(tab === 0 ? 'all' : 'unread');
+  };
 
   return (
     <div
@@ -19,7 +32,7 @@ function UnreadSwitch() {
         role="tab"
         aria-selected="true"
         aria-controls="radix-:rtp:-content-all"
-        onClick={() => setActiveTab(0)}
+        onClick={() => handleClick(0)}
         data-state={activeTab === 0 ? 'active' : 'inactive'}
         id="radix-:rtp:-trigger-all"
         className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow text-zinc-600 dark:text-zinc-200"
@@ -30,7 +43,7 @@ function UnreadSwitch() {
         All mail
       </button>
       <button
-        onClick={() => setActiveTab(1)}
+        onClick={() => handleClick(1)}
         type="button"
         role="tab"
         aria-selected="false"
