@@ -4,18 +4,24 @@ import getOAuthClient from './getOAuthClient';
 
 export default async function listGmailMessages(
   maxResults: number,
+  filter?: 'all' | 'unread',
   page?: string,
 ) {
   {
     const oauth2Client = await getOAuthClient();
 
     const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
+
+    const labelIds = ['INBOX'];
+
+    if (filter === 'unread') labelIds.push('UNREAD');
+
     try {
       const response = await gmail.users.messages.list({
         userId: 'me',
         includeSpamTrash: false,
         pageToken: page,
-        labelIds: ['INBOX'],
+        labelIds,
         maxResults,
       });
 
