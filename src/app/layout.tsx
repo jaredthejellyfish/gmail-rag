@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import Navigation from '@c/heading';
 import QueryProvider from '@c/query-provider';
 import { ThemeProvider } from '@c/theme-provider';
 
@@ -27,7 +26,6 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
-          <Navigation />
           <QueryProvider>{children}</QueryProvider>
         </ThemeProvider>
       </body>
