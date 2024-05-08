@@ -3,6 +3,7 @@
 import React from 'react';
 
 import currentEmailStore from '@/lib/store/current-email.store';
+import { cn } from '@/lib/utils';
 
 type Props = {
   sender: string;
@@ -25,13 +26,16 @@ function InboxEmail({
   unread,
   id,
 }: Props) {
-  const { set } = currentEmailStore();
+  const { set, id: currentId } = currentEmailStore();
   return (
     <button
       onClick={() => {
         set(id);
       }}
-      className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent bg-muted w-full"
+      className={cn(
+        'flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-colors hover:bg-neutral-300/20 bg-muted w-full',
+        currentId === id && 'border-white/40',
+      )}
     >
       <div className="flex w-full flex-col gap-1">
         <div className="flex items-center">

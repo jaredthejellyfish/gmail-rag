@@ -3,8 +3,8 @@ import { ParseGmailApi } from 'gmail-api-parse-message-ts';
 import React from 'react';
 
 import Draft from '@/components/draft-email';
-import listGmailDrafts from '@/lib/utils/google/listGmailDrafts';
 import { Separator } from '@/components/ui/separator';
+import listGmailDrafts from '@/lib/utils/google/listGmailDrafts';
 
 const unescapeHTML = (str: string) =>
   str.replace(
@@ -28,7 +28,7 @@ async function Inbox() {
     return parsedDraft;
   });
   return (
-    <section className="bg-black flex flex-col max-h-screen pb-5">
+    <section className="dark:bg-black bg-white flex flex-col max-h-screen pb-5">
       <div className="flex items-center px-4 py-2">
         <h1 className="text-xl font-bold">Drafts</h1>
         <span className="h-9"></span>

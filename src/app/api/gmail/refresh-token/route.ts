@@ -77,7 +77,5 @@ export async function GET(req: NextRequest) {
     sameSite: 'strict',
   } as RequestCookie);
 
-
-
   return NextResponse.redirect(nextUrl);
 }

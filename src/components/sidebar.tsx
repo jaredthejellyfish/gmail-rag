@@ -1,6 +1,5 @@
 'use client';
 
-import { Separator } from '@/components/ui/separator';
 import {
   Archive,
   ArchiveX,
@@ -19,13 +18,16 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
+import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
+
+import ThemeToggle from './theme-toggle';
 
 function Sidebar({ collapsed }: { collapsed: boolean }) {
   const pathname = usePathname();
 
   return (
-    <div className="bg-black h-screen">
+    <div className="dark:bg-black bg-white h-screen">
       <div className="flex h-[52px] items-center justify-center px-2">
         <button
           type="button"
@@ -196,6 +198,10 @@ function Sidebar({ collapsed }: { collapsed: boolean }) {
             </span>
           </Link>
         </nav>
+      </div>
+
+      <div className="mt-full">
+        <ThemeToggle />
       </div>
     </div>
   );

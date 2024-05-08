@@ -1,14 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 import { addSearchParam, removeSearchParam } from '@u/searchParams';
 
 import inboxModeStore from '@/lib/store/inbox-mode.store';
 
 function UnreadSwitch() {
-  const [activeTab, setActiveTab] = useState<number>(0);
+  const searchParams = useSearchParams();
+
+  const initialUnread = searchParams.get('unread') === 'true';
+
   const { set } = inboxModeStore();
+
+  const [activeTab, setActiveTab] = useState<number>(initialUnread ? 1 : 0);
+
+  useEffect(() => {
+    set(initialUnread ? 'unread' : 'all');
+  }, [initialUnread, set]);
 
   const handleClick = (tab: number) => {
     setActiveTab(tab);

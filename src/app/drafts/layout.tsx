@@ -13,7 +13,7 @@ import { Separator } from '@/components/ui/separator';
 
 function DraftsScheleton() {
   return (
-    <section className="bg-black flex flex-col max-h-screen pb-5 h-screen">
+    <section className="dark:bg-black bg-white flex flex-col max-h-screen pb-5 h-screen">
       <div className="flex items-center px-4 py-2">
         <h1 className="text-xl font-bold">Drafts</h1>
         <span className="h-9"></span>

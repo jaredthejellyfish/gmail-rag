@@ -14,7 +14,7 @@ import { Separator } from '@/components/ui/separator';
 
 function InboxSkeleton() {
   return (
-    <section className="bg-black flex flex-col max-h-screen pb-5 h-screen">
+    <section className="dark:bg-black bg-white flex flex-col max-h-screen pb-5 h-screen">
       <div className="flex items-center px-4 py-2">
         <h1 className="text-xl font-bold">Inbox</h1>
         <div
@@ -57,10 +57,10 @@ function InboxSkeleton() {
       </div>
       <Separator />
       <div className="px-3 flex flex-col gap-2 overflow-y-scroll max-h-full py-2">
-        <div className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm animate-pulse bg-gradient-to-br from-neutral-600 via-neutral-700 to-neutral-800 transition-all hover:bg-accent bg-muted w-full h-[142px]"></div>
-        <div className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm animate-pulse bg-gradient-to-br from-neutral-600 via-neutral-700 to-neutral-800 transition-all hover:bg-accent bg-muted w-full h-[142px]"></div>
-        <div className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm animate-pulse bg-gradient-to-br from-neutral-600 via-neutral-700 to-neutral-800 transition-all hover:bg-accent bg-muted w-full h-[142px]"></div>
-        <div className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm animate-pulse bg-gradient-to-br from-neutral-600 via-neutral-700 to-neutral-800 transition-all hover:bg-accent bg-muted w-full h-[142px]"></div>
+        <div className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm animate-pulse bg-gradient-to-br dark:from-neutral-600 dark:via-neutral-700 dark:to-neutral-800 from-neutral-200 via-neutral-300 to-neutral-400 transition-all hover:bg-accent bg-muted w-full h-[142px]"></div>
+        <div className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm animate-pulse bg-gradient-to-br dark:from-neutral-600 dark:via-neutral-700 dark:to-neutral-800 from-neutral-200 via-neutral-300 to-neutral-400 transition-all hover:bg-accent bg-muted w-full h-[142px]"></div>
+        <div className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm animate-pulse bg-gradient-to-br dark:from-neutral-600 dark:via-neutral-700 dark:to-neutral-800 from-neutral-200 via-neutral-300 to-neutral-400 transition-all hover:bg-accent bg-muted w-full h-[142px]"></div>
+        <div className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm animate-pulse bg-gradient-to-br dark:from-neutral-600 dark:via-neutral-700 dark:to-neutral-800 from-neutral-200 via-neutral-300 to-neutral-400 transition-all hover:bg-accent bg-muted w-full h-[142px]"></div>
       </div>
     </section>
   );

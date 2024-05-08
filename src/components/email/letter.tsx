@@ -7,11 +7,11 @@ import { Letter as ReactLetter } from 'react-letter';
 
 import { Separator } from '@/components/ui/separator';
 import currentEmailStore from '@/lib/store/current-email.store';
+import { setSearchParam } from '@/lib/utils';
 
 import { Avatar, AvatarFallback } from '../ui/avatar';
 import EmailHeader from './email-header';
 import EmailSkeleton from './email-skeleton';
-import { setSearchParam } from '@/lib/utils';
 
 type Props = {
   data?: IEmail;
@@ -65,7 +65,7 @@ function Letter({ data: email, sId }: Props) {
       <EmailHeader />
       <Separator />
 
-      <div className="flex flex-row justify-start bg-black p-3 gap-x-3">
+      <div className="flex flex-row justify-start dark:bg-black bg-white p-3 gap-x-3">
         <Avatar>
           <AvatarFallback>{initialsFromName(data.from.name)}</AvatarFallback>
         </Avatar>

@@ -64,7 +64,7 @@ async function Email({ searchParams: { id } }: Props) {
   const { email } = await prefetchEmail(id);
 
   return (
-    <div className="w-full bg-neutral-900 h-full max-h-screen overflow-scroll flex flex-col">
+    <div className="w-full dark:bg-neutral-900 bg-neutral-200 h-full max-h-screen overflow-scroll flex flex-col">
       <Letter data={email} sId={id ?? email?.id} />
     </div>
   );

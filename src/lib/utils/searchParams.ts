@@ -35,6 +35,6 @@ const setSearchParam = (name: string, value: string) => {
   currentParams.set(name, value);
 
   window.history.pushState({}, '', `/inbox?${currentParams.toString()}`);
-}
+};
 
 export { addSearchParam, removeSearchParam, setSearchParam };

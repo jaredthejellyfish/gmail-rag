@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     console.log('cookieStore', cookieStore);
     const supabase = createClient();
 
-    console.log(code)
+    console.log(code);
 
     const {
       error,

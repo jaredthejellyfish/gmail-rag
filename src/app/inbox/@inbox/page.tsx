@@ -13,7 +13,7 @@ async function Inbox({
 }: {
   searchParams: { page: string | undefined };
 }) {
-  const { messages } = await listGmailMessages(50, "all", page);
+  const { messages } = await listGmailMessages(50, 'all', page);
   const emailParser = new ParseGmailApi();
 
   const parsedMessages = messages?.map((email) => {
@@ -22,7 +22,7 @@ async function Inbox({
   });
 
   return (
-    <section className="bg-black flex flex-col max-h-screen pb-5">
+    <section className="dark:bg-black bg-white flex flex-col max-h-screen pb-5">
       <div className="flex items-center px-4 py-2">
         <h1 className="text-xl font-bold">Inbox</h1>
         <UnreadSwitch />

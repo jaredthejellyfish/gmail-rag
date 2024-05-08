@@ -16,9 +16,12 @@ import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@c/ui/avatar';
 
 import getOAuthClient from '@u/google/getOAuthClient';
+
 import { Separator } from '@/components/ui/separator';
 
-const Letter = dynamic(() => import('@/components/email/letter'), { ssr: false });
+const Letter = dynamic(() => import('@/components/email/letter'), {
+  ssr: false,
+});
 
 type Props = {
   searchParams: { id: string | undefined };
@@ -46,7 +49,7 @@ async function Email({ searchParams: { id } }: Props) {
   const email = new ParseGmailApi().parseMessage(data.data);
 
   return (
-    <div className="w-full bg-neutral-900 h-full max-h-screen overflow-scroll flex flex-col">
+    <div className="w-full dark:bg-neutral-900 bg-neutral-200 h-full max-h-screen overflow-scroll flex flex-col">
       <div className="flex items-center p-2">
         <div className="flex items-center gap-2">
           <button
@@ -128,7 +131,7 @@ async function Email({ searchParams: { id } }: Props) {
         </button>
       </div>
       <Separator />
-      <div className="flex flex-row justify-start bg-black p-3 gap-x-3">
+      <div className="flex flex-row justify-start dark:bg-black bg-white p-3 gap-x-3">
         <Avatar>
           <AvatarImage />
           <AvatarFallback>{initialsFromName(email.from.name)}</AvatarFallback>
@@ -143,9 +146,7 @@ async function Email({ searchParams: { id } }: Props) {
         </span>
       </div>
       <Separator />
-      <div className="p-4">
-        {email.textHtml && <Letter data={email} />}
-      </div>
+      <div className="p-4">{email.textHtml && <Letter data={email} />}</div>
     </div>
   );
 }

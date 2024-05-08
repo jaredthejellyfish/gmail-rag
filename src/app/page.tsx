@@ -1,6 +1,5 @@
-import StoreSubscriber from '@c/store-subscriber';
-
 import Navigation from '@c/heading';
+import StoreSubscriber from '@c/store-subscriber';
 
 export default async function Home() {
   return (

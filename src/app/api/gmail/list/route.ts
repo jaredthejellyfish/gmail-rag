@@ -5,12 +5,12 @@ import listGmailMessages from '@/lib/utils/google/listGmailMessages';
 
 export async function GET(req: NextRequest) {
   try {
-    const query = new URL(req.nextUrl).searchParams;
+    const query = new URL(req.nextUrl.clone()).searchParams;
 
     const maxResults = Number(query.get('max') ?? '10');
     const filter = (query.get('filter') ?? 'all') as 'all' | 'unread';
 
-    const { messages } = await listGmailMessages(maxResults , filter);
+    const { messages } = await listGmailMessages(maxResults, filter);
     const emailParser = new ParseGmailApi();
 
     const parsedMessages = messages?.map((email) => {

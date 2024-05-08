@@ -9,12 +9,13 @@ import {
   Trash2,
 } from 'lucide-react';
 
-import { Avatar, AvatarFallback } from '../ui/avatar';
 import { Separator } from '@/components/ui/separator';
+
+import { Avatar, AvatarFallback } from '../ui/avatar';
 
 export default function EmailSkeleton() {
   return (
-    <div className="w-full bg-neutral-900 h-full max-h-screen overflow-scroll flex flex-col">
+    <div className="w-full dark:bg-neutral-900 bg-neutral-200 h-full max-h-screen overflow-scroll flex flex-col">
       <div className="flex items-center p-2">
         <div className="flex items-center gap-2">
           <button
@@ -96,15 +97,15 @@ export default function EmailSkeleton() {
         </button>
       </div>
       <Separator />
-      <div className="flex flex-row justify-start bg-black p-3 gap-x-3">
+      <div className="flex flex-row justify-start dark:bg-black bg-white p-3 gap-x-3">
         <Avatar>
           <AvatarFallback>?</AvatarFallback>
         </Avatar>
         <div className="flex flex-col items-start justify-center w-full max-w-[65%] gap-y-1">
-          <div className="font-semibold text-base animate-pulse bg-gradient-to-br from-neutral-600 via-neutral-700 to-neutral-800 h-4 w-20 rounded"></div>
-          <div className="font-semibold text-base animate-pulse bg-gradient-to-br from-neutral-600 via-neutral-700 to-neutral-800 h-3 w-full rounded"></div>
+          <div className="font-semibold text-base animate-pulse bg-gradient-to-br dark:from-neutral-600 dark:via-neutral-700 dark:to-neutral-800 from-neutral-200 via-neutral-300 to-neutral-400 h-4 w-20 rounded"></div>
+          <div className="font-semibold text-base animate-pulse bg-gradient-to-br dark:from-neutral-600 dark:via-neutral-700 dark:to-neutral-800 from-neutral-200 via-neutral-300 to-neutral-400 h-3 w-full rounded"></div>
         </div>
-        <div className="font-semibold text-base animate-pulse bg-gradient-to-br from-neutral-600 via-neutral-700 to-neutral-800 h-3 w-full max-w-[20%] rounded"></div>
+        <div className="font-semibold text-base animate-pulse bg-gradient-to-br dark:from-neutral-600 dark:via-neutral-700 dark:to-neutral-800 from-neutral-200 via-neutral-300 to-neutral-400 h-3 w-full max-w-[20%] rounded"></div>
       </div>
       <Separator />
       <div className="p-4 h-full flex items-center justify-center">

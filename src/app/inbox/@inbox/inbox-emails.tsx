@@ -53,6 +53,12 @@ function InboxEmails({ parsedMessages }: Props) {
       ));
   if (error) return <p>Error: {error.message}</p>;
   if (!data) return <p>No emails found</p>;
+  if (data && !data.length)
+    return (
+      <div className="w-full h-screen flex items-center justify-center text-xl">
+        <p>No {status === 'unread' ? 'unread ' : ''}emails found.</p>
+      </div>
+    );
 
   return data?.map((email) => (
     <InboxEmail
